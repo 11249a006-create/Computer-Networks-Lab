@@ -1,0 +1,19 @@
+Aim:
+To write a Python program to display all IP addresses of the system.
+
+Algorithm:
+1. Import the socket module.
+2. Get the hostname.
+3. Find all IP addresses using gethostbyname_ex().
+4. Display all IP addresses.
+Program:
+import socket
+
+host = socket.gethostname()
+ip = socket.gethostbyname_ex(host)
+
+print("Hostname:", host)
+print("IP Addresses:")
+
+for i in ip[2]:
+    print(i)
