@@ -1,0 +1,48 @@
+Aim:
+To transfer a file between client and server using TCP sockets.
+
+Algorithm:
+1. Create a TCP server socket.
+2. Bind and listen for clients.
+3. Accept client connection.
+4. Receive file data.
+5. Save the received file.
+6. Client sends the file to the server.
+Server Program:
+import socket
+
+s = socket.socket()
+s.bind(('localhost', 5000))
+s.listen(1)
+
+c, addr = s.accept()
+
+f = open("received.txt", "wb")
+
+while True:
+    data = c.recv(1024)
+    if not data:
+        break
+    f.write(data)
+
+f.close()
+c.close()
+s.close()
+client program:
+import socket
+
+s = socket.socket()
+s.connect(('localhost', 5000))
+
+f = open("sample.txt", "rb")
+
+while True:
+    data = f.read(1024)
+    if not data:
+        break
+    s.sendall(data)
+
+s.shutdown(socket.SHUT_WR)
+
+f.close()
+s.close()
