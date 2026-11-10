@@ -23,3 +23,16 @@ c.send(data)
 
 c.close()
 s.close()
+server program:
+import socket
+
+s = socket.socket()
+s.connect(('localhost', 5000))
+
+msg = input("Enter message: ")
+s.send(msg.encode())
+
+data = s.recv(1024)
+print("Echo:", data.decode())
+
+s.close()
