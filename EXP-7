@@ -1,0 +1,26 @@
+Aim:
+To check network connectivity and find the port number of a service using Python.
+
+Algorithm:
+1. Import socket and os modules.
+2. Read the website name.
+3. Execute the ping command.
+4. Create a socket connection.
+5. Check the service port and display the result.
+Program:
+import socket
+import os
+
+host = input("Enter host: ")
+
+os.system("ping -n 4 " + host)
+
+s = socket.socket()
+
+try:
+    s.connect((host, 80))
+    print("Port 80 is open")
+except:
+    print("Port 80 is closed")
+
+s.close()
