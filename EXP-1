@@ -1,0 +1,16 @@
+Aim:
+To write a Python program to find the hostname and IP address of a system.
+
+Algorithm:
+1. Import the socket module.
+2. Get the hostname using gethostname().
+3. Get the IP address using gethostbyname().
+4. Display the hostname and IP address.
+Program:
+import socket
+
+host = socket.gethostname()
+ip = socket.gethostbyname(host)
+
+print("Hostname:", host)
+print("IP Address:", ip)
