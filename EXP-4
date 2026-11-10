@@ -1,0 +1,15 @@
+Aim:
+To write a Python program to find the IP address of a website.
+
+Algorithm:
+1. Import the socket module.
+2. Read the website name.
+3. Use gethostbyname() to find its IP.
+4. Display the IP address.
+import socket
+
+website = input("Enter website: ")
+
+ip = socket.gethostbyname(website)
+
+print("IP Address:", ip)
