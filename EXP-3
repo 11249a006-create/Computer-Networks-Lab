@@ -1,0 +1,18 @@
+Aim:
+To study and execute basic networking commands.
+
+Algorithm:
+1. Open the command prompt.
+2. Enter the required networking command.
+3. Observe the output.
+4. Verify network information.
+Commands:
+Command	Purpose
+ipconfig	Displays IP configuration
+ping google.com	Checks connectivity
+ipconfig /all	Displays detailed network information
+nslookup google.com	Finds DNS information
+tracert google.com	Displays network route
+hostname	Displays system hostname
+arp -a	Displays ARP table
+netstat -an	Displays network connections
