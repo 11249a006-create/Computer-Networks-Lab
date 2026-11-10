@@ -1,0 +1,35 @@
+Aim:
+To implement a UDP multicast chat application using Python.
+
+Algorithm:
+1. Import socket and struct modules.
+2. Create a UDP socket.
+3. Join a multicast group.
+4. Send messages to the multicast address.
+5. Receive messages from other clients.
+6. Display the messages.
+Program (Receiver):
+import socket
+
+group = '224.1.1.1'
+port = 5007
+
+s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+s.bind(('', port))
+
+mreq = socket.inet_aton(group) + socket.inet_aton('0.0.0.0')
+s.setsockopt(socket.IPPROTO_IP, socket.IP_ADD_MEMBERSHIP, mreq)
+
+while True:
+    data, addr = s.recvfrom(1024)
+    print(data.decode())
+sender:
+import socket
+
+s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+s.setsockopt(socket.IPPROTO_IP, socket.IP_MULTICAST_TTL, 2)
+
+while True:
+    msg = input("Enter message: ")
+    s.sendto(msg.encode(), ('224.1.1.1', 5007))
