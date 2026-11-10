@@ -1,0 +1,37 @@
+Aim:
+To implement the Link State Routing Algorithm using Python.
+
+Algorithm:
+1. Read the network cost matrix.
+2. Select the source node.
+3. Initialize distances.
+4. Find the nearest unvisited node.
+5. Update the distances of adjacent nodes.
+6. Display the shortest paths.
+Program:
+n = int(input("Enter number of nodes: "))
+
+g = [list(map(int, input().split())) for i in range(n)]
+
+src = int(input("Enter source node: "))
+
+d = [999] * n
+visited = [False] * n
+d[src] = 0
+
+for i in range(n):
+    u = -1
+
+    for j in range(n):
+        if not visited[j] and (u == -1 or d[j] < d[u]):
+            u = j
+
+    visited[u] = True
+
+    for v in range(n):
+        if g[u][v] > 0 and d[u] + g[u][v] < d[v]:
+            d[v] = d[u] + g[u][v]
+
+print("Shortest distances:")
+for i in range(n):
+    print(src, "to", i, "=", d[i])
