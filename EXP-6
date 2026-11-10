@@ -1,0 +1,18 @@
+Aim:
+To write a Python program to perform DNS lookup.
+
+Algorithm:
+1. Import the socket module.
+2. Read the domain name.
+3. Find its IP address using DNS.
+4. Display the result.
+Program:
+import socket
+
+domain = input("Enter domain: ")
+
+try:
+    ip = socket.gethostbyname(domain)
+    print("IP Address:", ip)
+except:
+    print("DNS lookup failed")
