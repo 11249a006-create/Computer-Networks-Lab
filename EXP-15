@@ -1,0 +1,23 @@
+Aim:
+To write a Python program to obtain the local DNS server hostname and IP address.
+
+Algorithm:
+1. Install and import the dnspython module.
+2. Create a DNS resolver object.
+3. Get the configured DNS server IP addresses.
+4. Find the hostname of the DNS server.
+5. Display the details.
+Program:
+import dns.resolver
+import socket
+
+r = dns.resolver.Resolver()
+
+for ip in r.nameservers:
+    print("DNS Server IP:", ip)
+
+    try:
+        host = socket.gethostbyaddr(ip)[0]
+        print("Hostname:", host)
+    except:
+        print("Hostname not found")
