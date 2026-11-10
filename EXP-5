@@ -1,0 +1,16 @@
+Aim:
+To write a Python program to display the public IP address.
+
+Algorithm:
+1. Import the urllib module.
+2. Connect to a public IP service.
+3. Read the IP address.
+4. Display the public IP.
+Program:
+import urllib.request
+
+ip = urllib.request.urlopen(
+    "https://api.ipify.org"
+).read().decode()
+
+print("Public IP:", ip)
