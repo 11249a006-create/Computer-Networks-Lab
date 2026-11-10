@@ -1,0 +1,24 @@
+Aim:
+To implement Address Resolution Protocol (ARP) using Python.
+
+Algorithm:
+1. Import the Scapy module.
+2. Create an ARP request packet.
+3. Broadcast the request.
+4. Receive the response.
+5. Display the IP and MAC addresses.
+Program:
+from scapy.all import *
+
+ip = input("Enter IP address: ")
+
+arp = ARP(pdst=ip)
+broadcast = Ether(dst="ff:ff:ff:ff:ff:ff")
+
+packet = broadcast / arp
+
+result = srp(packet, timeout=2, verbose=0)[0]
+
+for sent, received in result:
+    print("IP:", received.psrc)
+    print("MAC:", received.hwsrc)
