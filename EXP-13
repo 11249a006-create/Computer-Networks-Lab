@@ -1,0 +1,23 @@
+Aim:
+To implement the Distance Vector Routing Algorithm using Python.
+
+Algorithm:
+1. Initialize the distance matrix.
+2. Set the distance to infinity for unreachable nodes.
+3. Update distances using intermediate nodes.
+4. Repeat until no shorter path is found.
+5. Display the shortest distances.
+Program:
+n = int(input("Enter number of nodes: "))
+
+print("Enter cost matrix:")
+d = [list(map(int, input().split())) for i in range(n)]
+
+for k in range(n):
+    for i in range(n):
+        for j in range(n):
+            d[i][j] = min(d[i][j], d[i][k] + d[k][j])
+
+print("Shortest distance matrix:")
+for row in d:
+    print(*row)
