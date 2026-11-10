@@ -1,0 +1,25 @@
+Aim:
+To implement TCP echo server and client communication using Python.
+
+Algorithm:
+1. Import the socket module.
+2. Create a TCP server socket.
+3. Bind and listen for clients.
+4. Accept client connection.
+5. Receive the message and send it back.
+6. Client displays the received message.
+Server Program:
+import socket
+
+s = socket.socket()
+s.bind(('localhost', 5000))
+s.listen(1)
+
+c, addr = s.accept()
+data = c.recv(1024)
+
+print("Client:", data.decode())
+c.send(data)
+
+c.close()
+s.close()
